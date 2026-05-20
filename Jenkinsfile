@@ -81,7 +81,7 @@ pipeline {
         --name pd-backend \
         tharun118wizard/pd-cicd-backend:latest
 
-        docker run -d -p 3001:3000 \
+        docker run -d -p 3001:80 \
         --name pd-frontend \
         tharun118wizard/pd-cicd-frontend:latest
         '''
