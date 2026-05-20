@@ -19,8 +19,8 @@ pipeline {
                 dir('backend') {
                     sh '''
                     docker build \
-                    -t $DOCKER_HUB/pd-backend:$BUILD_NUMBER \
-                    -t $DOCKER_HUB/pd-backend:latest .
+                    -t $DOCKER_HUB/pd-cicd-backend:$BUILD_NUMBER \
+                    -t $DOCKER_HUB/pd-cicd-backend:latest .
                     '''
                 }
             }
@@ -31,8 +31,8 @@ pipeline {
                 dir('frontend') {
                     sh '''
                     docker build \
-                    -t $DOCKER_HUB/pd-frontend:$BUILD_NUMBER \
-                    -t $DOCKER_HUB/pd-frontend:latest .
+                    -t $DOCKER_HUB/pd-cicd-frontend:$BUILD_NUMBER \
+                    -t $DOCKER_HUB/pd-cicd-frontend:latest .
                     '''
                 }
             }
@@ -54,8 +54,8 @@ pipeline {
         stage('Push Backend Image') {
             steps {
                 sh '''
-                docker push $DOCKER_HUB/pd-backend:$BUILD_NUMBER
-                docker push $DOCKER_HUB/pd-backend:latest
+                docker push $DOCKER_HUB/pd-cicd-backend:$BUILD_NUMBER
+                docker push $DOCKER_HUB/pd-cicd-backend:latest
                 '''
             }
         }
@@ -63,8 +63,8 @@ pipeline {
         stage('Push Frontend Image') {
             steps {
                 sh '''
-                docker push $DOCKER_HUB/pd-frontend:$BUILD_NUMBER
-                docker push $DOCKER_HUB/pd-frontend:latest
+                docker push $DOCKER_HUB/pd-cicd-frontend:$BUILD_NUMBER
+                docker push $DOCKER_HUB/pd-cicd-frontend:latest
                 '''
             }
         }
