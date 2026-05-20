@@ -39,7 +39,7 @@ class_names = [
 # HOME ROUTE
 @app.route('/')
 def home():
-    return "Plant Disease Backend Running in 5000 ktg"
+    return "Plant Disease Backend Running in 5000 ktg-deep"
 
 
 # PREDICTION ROUTE
