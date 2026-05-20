@@ -10,7 +10,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/tharun118-wizard/PD-Devops-Project.git'
+                url: 'https://github.com/tharun118-wizard/PD-Devops-CICD.git'
             }
         }
 
