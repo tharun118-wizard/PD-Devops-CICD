@@ -68,29 +68,5 @@ pipeline {
                 '''
             }
         }
-
-stage('Update Backend Image') {
-    steps {
-        sh """
-        kubectl set image deployment/pd-backend \
-        pd-backend=tharun118wizard/pd-backend:${BUILD_NUMBER}
-        """
-    }
-}
-
-stage('Update Frontend Image') {
-    steps {
-        sh """
-        kubectl set image deployment/pd-frontend \
-        pd-frontend=tharun118wizard/pd-frontend:${BUILD_NUMBER}
-        """
-    }
-}
-
-        stage('Deploy to Kubernetes') {
-            steps {
-                sh 'kubectl apply -f k8s/ --validate=false'
-            }
-        }
     }
 }
