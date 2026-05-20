@@ -68,5 +68,24 @@ pipeline {
                 '''
             }
         }
+       stage('Run Containers') {
+    steps {
+        sh '''
+        docker stop pd-backend || true
+        docker rm pd-backend || true
+
+        docker stop pd-frontend || true
+        docker rm pd-frontend || true
+
+        docker run -d -p 5000:5000 \
+        --name pd-backend \
+        tharun118wizard/pd-cicd-backend:latest
+
+        docker run -d -p 3001:3000 \
+        --name pd-frontend \
+        tharun118wizard/pd-cicd-frontend:latest
+        '''
+    }
+}
     }
 }
